@@ -1,5 +1,18 @@
 #include "common.h"
 
+// Function to inc a bit - bitwise operation only
+unsigned int inc_bitwise(unsigned int x) {
+    unsigned int y = 0x1;
+    while (1) {
+        x ^= y;
+        if (x & y) {
+            break;
+        }
+        y <<= 1;
+    } 
+    return x;
+}
+
 unsigned int Increment(unsigned int inData)
 {
     if((~0x0) == inData)
@@ -7,14 +20,14 @@ unsigned int Increment(unsigned int inData)
         printf("Overflow \n");
     }
     unsigned int incr = 0x1;
-	unsigned int carry = 0;
+    unsigned int carry = 0;
 	
     while(incr)
-	{
-		carry = inData & incr;
+    {
+	carry = inData & incr;
      	inData = inData ^ incr;
         incr = carry << 0x1;
-	}
+    }
 	
     printf("Incremented ");	
     DisplayBinary(inData);
