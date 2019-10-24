@@ -1,5 +1,15 @@
 #include "common.h"
 
+
+// Swap numbers
+void swap(unsigned int *x, unsigned int *y)
+{
+    if (*x == *y) return;
+    *x ^= *y;
+    *y ^= *x;
+    *x ^= *y;
+}
+
 void ReplaceBits(unsigned int *data, int position, int count, unsigned int maskBits)
 {
     // verify input
