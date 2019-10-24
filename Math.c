@@ -2,10 +2,31 @@
 
 // Function to inc a bit - bitwise operation only
 unsigned int inc_bitwise(unsigned int x) {
+    if ((~0x0) == x) {
+        printf ("underflow\n");
+        return -1;
+    }
+
     unsigned int y = 0x1;
     while (1) {
         x ^= y;
         if (x & y) {
+            break;
+        }
+        y <<= 1;
+    } 
+    return x;
+}
+
+unsigned int dec_bitwise(unsigned int x) {
+    if (0 == x) {
+        printf ("underflow\n");
+        return -1;
+    }
+    unsigned int y = 0x1;
+    while (1) {
+        x ^= y;
+        if (0 == (x & y)) {
             break;
         }
         y <<= 1;
