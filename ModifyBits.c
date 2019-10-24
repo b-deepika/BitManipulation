@@ -1,5 +1,12 @@
 #include "common.h"
 
+// Check is power of 2
+int isPowerOfTwo(int x) 
+{
+     // x - the case when x is 0
+     // In case of power of 2 (x & x-1) will be zero
+     return x && (0 == (x & (x - 1))); 
+} 
 
 // Swap numbers
 void swap(unsigned int *x, unsigned int *y)
