@@ -1,5 +1,33 @@
 #include "common.h"
 
+int isPowerof2(unsigned int x) {
+    return (x != 0) && ((x & (x - 1)) == 0);
+}
+
+int generate_grey_code(unsigned int max) {
+    unsigned int arr[max];
+    unsigned int mask = 0;
+    arr[0] = 0;
+    arr[1] = 1;
+
+    printf ("Grey code = %x \t %x \t", arr[0], arr[1]);
+    unsigned int temp = 0;
+    for (int i = 2; i < max;) {
+        if (1 == isPowerof2(i)) {
+            mask = i;
+            for (int j = i-1; j >=0 ; j--) {
+                arr[i] = arr[j];
+                arr[i] = arr[i] | mask;
+                printf("%x \t", arr[i]);
+                i++;
+            }
+        } else {
+            i++;
+        }
+    }
+    printf("\n");
+}
+
 // Function to inc a bit - bitwise operation only
 unsigned int inc_bitwise(unsigned int x) {
     if ((~0x0) == x) {
